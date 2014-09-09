@@ -15,7 +15,24 @@ void setup () {
 
 void loop () {
   buttonCurrent = digitalRead(button);
-  
+
+  if (buttonCurrent == LOW) {
+    digitalWrite(led1, HIGH);
+  } 
+  else {
+    digitalWrite(led1, LOW);
+    
+      pushCount++;
+      Serial.print("push count: ");
+      Serial.println(pushCount);
+    }
+    
+    Serial.println("nothing is happening");
+  }
+
+
+
+/*
   if (buttonCurrent != buttonPrevious) {
     
     if (buttonCurrent == HIGH) {
@@ -37,4 +54,6 @@ void loop () {
   } else {
     digitalWrite(led1, LOW);
   }
+  
+  */
 }
