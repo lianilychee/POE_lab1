@@ -56,6 +56,7 @@ void loop () {
     digitalWrite(led2, LOW);
     digitalWrite(led3, LOW);
     digitalWrite(led1, LOW);
+    delay(400);
   }
   else if (pushCount == 4) {
     Serial.println("bouncing");
