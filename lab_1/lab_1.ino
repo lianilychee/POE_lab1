@@ -13,13 +13,13 @@ void setup () {
   Serial.begin(9600);
 }
 
+
 void loop () {
   buttonCurrent = digitalRead(button);
   
   if (buttonCurrent != buttonPrevious) {
     
     if (buttonCurrent == HIGH) {
-      
       pushCount++;
       Serial.println("on");
       Serial.print("number of button pushes: ");
