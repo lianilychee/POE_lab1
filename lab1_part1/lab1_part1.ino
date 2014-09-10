@@ -18,7 +18,6 @@ void setup () {
   Serial.begin(9600);
 }
 
-
 void loop () {
   buttonCurrent = digitalRead(button);
 
