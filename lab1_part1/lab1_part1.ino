@@ -1,12 +1,15 @@
+// Assign pins to components.
 const int button = 8;
 const int led1 = 11;
 const int led2 = 12;
 const int led3 = 13;
 
+// Variables to monitor pushbutton state.
 int pushCount = 0;
 int buttonCurrent = 0;
 int buttonPrevious = 0;
 
+// Assign pin types.
 void setup () {
   pinMode(button, INPUT);
   pinMode(led2, OUTPUT);
@@ -15,17 +18,21 @@ void setup () {
   Serial.begin(9600);
 }
 
+
 void loop () {
   buttonCurrent = digitalRead(button);
 
   if (buttonCurrent != buttonPrevious) {
     if (buttonCurrent == HIGH) {
       pushCount++;
+      
+      // Reset pushCount to avoid dealing with modulus.
       if (pushCount == 5) { 
         pushCount = 1; 
       }; 
+      
       Serial.println("on");
-      Serial.print("number of button pushes: ");
+      Serial.print("Button state: ");
       Serial.println(pushCount);
     }
     else {
@@ -35,20 +42,20 @@ void loop () {
 
   buttonPrevious = buttonCurrent;
 
+  // State 1: all on.
   if (pushCount == 1) {
-    Serial.println("all on");
     digitalWrite(led1, HIGH);
     digitalWrite(led2, HIGH);
     digitalWrite(led3, HIGH);
   } 
+  // State 2: all off.
   else if (pushCount == 2) {
-    Serial.println("all off");
     digitalWrite(led2, LOW);
     digitalWrite(led3, LOW);
     digitalWrite(led1, LOW);
   }
+  // State 3: flashing w delay of 400 ms.
   else if (pushCount == 3) {
-    Serial.println("flashing");
     digitalWrite(led1, HIGH);
     digitalWrite(led2, HIGH);
     digitalWrite(led3, HIGH);
@@ -58,8 +65,8 @@ void loop () {
     digitalWrite(led1, LOW);
     delay(400);
   }
+  // State 4: bouncing w delay of 400 ms.
   else if (pushCount == 4) {
-    Serial.println("bouncing");
     digitalWrite(led1, HIGH);
     delay(400);
     digitalWrite(led1, LOW);
