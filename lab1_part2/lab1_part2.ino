@@ -57,7 +57,7 @@ void loop () {
   } 
   
   // State 2: all off.
-  if (pushCount == 2) {
+  else if (pushCount == 2) {
     //Serial.println("all off");
     digitalWrite(led2, LOW);
     digitalWrite(led3, LOW);
@@ -65,7 +65,7 @@ void loop () {
   }
   
   // State 3: flashing w delay dependent on pot.
-  if (pushCount == 3) {
+  else if (pushCount == 3) {
     //Serial.println("flashing");
     digitalWrite(led1, HIGH);
     digitalWrite(led2, HIGH);
@@ -78,7 +78,7 @@ void loop () {
   }
   
   // State 4: bouncing w delay dependent on pot.
-  else (pushCount == 4) {
+  else if (pushCount == 4) {
     //Serial.println("bouncing");
     digitalWrite(led1, HIGH);
     delay(potVal);
