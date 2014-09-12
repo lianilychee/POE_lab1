@@ -3,10 +3,10 @@ const int button = 8;
 const int led1 = 11;
 const int led2 = 12;
 const int led3 = 13;
-const float pot = A2;
+const float pot = A2; //defined for part 2 - analog pin
 
 // Variables to monitor pushbutton and pot state.
-float potVal = 0;
+float potVal = 0; //defined for part 2
 int pushCount = 0;
 int buttonCurrent = 0;
 int buttonPrevious = 0;
@@ -57,7 +57,7 @@ void loop () {
   } 
   
   // State 2: all off.
-  else if (pushCount == 2) {
+  if (pushCount == 2) {
     //Serial.println("all off");
     digitalWrite(led2, LOW);
     digitalWrite(led3, LOW);
@@ -65,7 +65,7 @@ void loop () {
   }
   
   // State 3: flashing w delay dependent on pot.
-  else if (pushCount == 3) {
+  if (pushCount == 3) {
     //Serial.println("flashing");
     digitalWrite(led1, HIGH);
     digitalWrite(led2, HIGH);
@@ -78,14 +78,14 @@ void loop () {
   }
   
   // State 4: bouncing w delay dependent on pot.
-  else if (pushCount == 4) {
+  else (pushCount == 4) {
     //Serial.println("bouncing");
     digitalWrite(led1, HIGH);
     delay(potVal);
     digitalWrite(led1, LOW);
     delay(potVal);
     digitalWrite(led2, HIGH);
-    delay(pot);
+    delay(potVal);
     digitalWrite(led2, LOW);
     delay(potVal);
     digitalWrite(led3, HIGH);
